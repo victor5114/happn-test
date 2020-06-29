@@ -1,0 +1,18 @@
+WITH data_with_previous_timestamp AS (
+  SELECT
+  LAG(created_ts, 1) OVER (PARTITION BY '' ORDER BY created_ts) AS previous_timestamp,
+  *
+  FROM `happn-test-technique.sampledatasets.events`
+), data_with_is_new_session AS (
+  SELECT
+  CASE WHEN TIMESTAMP_DIFF(created_ts, previous_timestamp, MINUTE) > 1 OR previous_timestamp IS NULL THEN 1 ELSE 0 END AS is_new_session,
+  *
+  FROM data_with_previous_timestamp
+), data_with_sessions AS (
+  SELECT
+  SUM(is_new_session) OVER (ORDER BY '', created_ts) AS session_id,
+  SUM(is_new_session) OVER (PARTITION BY '' ORDER BY created_ts) AS user_session_id,
+  *
+  FROM data_with_is_new_session
+)
+SELECT Event_id,created_ts,session_id FROM data_with_sessions

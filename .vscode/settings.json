@@ -1,0 +1,12 @@
+{
+    "terminal.integrated.env.osx": {
+        "CLOUDSDK_PYTHON": "/Users/pongnianvictor/miniconda2/bin/python",
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/pongnianvictor/.config/gcloud/application_default_credentials.json",
+        "GCLOUD_PROJECT": "happn-test-technique"
+    },
+    "python.venvFolders": [
+        "~/miniconda/envs/"
+    ],
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/Users/pongnianvictor/miniconda2/bin/python",
+}
