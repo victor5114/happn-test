@@ -9,7 +9,7 @@
 
 # Comments
 
-I strongly got inspired by [this blog][https://mac-blog.org.ua/bigquery-sessions/] and simply adjusted the query to get the requested results.
+I strongly got inspired by [this blog](https://mac-blog.org.ua/bigquery-sessions/) and simply adjusted the query to get the requested results.
 
 # Run script
 
