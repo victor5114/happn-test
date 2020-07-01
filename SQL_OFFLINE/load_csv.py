@@ -1,6 +1,8 @@
 from google.cloud import bigquery
+
 client = bigquery.Client()
 dataset_id = 'sampledatasets'
+uri = "gs://cloud-samples-data-test-happn/bigquery/events.csv"
 
 dataset_ref = client.dataset(dataset_id)
 
@@ -12,7 +14,6 @@ job_config.schema = [
 job_config.skip_leading_rows = 1
 # The source format defaults to CSV, so the line below is optional.
 job_config.source_format = bigquery.SourceFormat.CSV
-uri = "gs://cloud-samples-data-test-happn/bigquery/events.csv"
 
 load_job = client.load_table_from_uri(
     uri, dataset_ref.table("events"), job_config=job_config
